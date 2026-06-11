@@ -1,98 +1,44 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
-  return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+import React from "react";
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, StatusBar, SafeAreaView } from "react-native";
+import { useRouter } from "expo-router";
+import { programs } from "../../data/programs";
 
 export default function HomeScreen() {
+  const router = useRouter();
+  const renderItem = ({ item }: { item: any }) => (
+    <TouchableOpacity style={styles.card} onPress={() => router.push({ pathname: "/detail", params: { id: item.id } })} activeOpacity={0.85}>
+      <View style={styles.cardHeader}>
+        <Text style={styles.flag}>{item.flag}</Text>
+        <View style={styles.countryBadge}><Text style={styles.countryText}>{item.country}</Text></View>
+      </View>
+      <Text style={styles.universityName}>{item.university}</Text>
+      <Text style={styles.description}>{item.description}</Text>
+      <Text style={styles.viewMore}>View Details →</Text>
+    </TouchableOpacity>
+  );
   return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
-
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="light-content" backgroundColor="#1a1f3c" />
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>🌍 WayGood</Text>
+        <Text style={styles.headerSubtitle}>Find your study abroad program</Text>
+      </View>
+      <FlatList data={programs} keyExtractor={(item) => item.id.toString()} renderItem={renderItem} contentContainerStyle={styles.list} showsVerticalScrollIndicator={false} />
+    </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
-  },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
-  },
-  title: {
-    textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
-  },
+  container: { flex: 1, backgroundColor: "#f0f4ff" },
+  header: { backgroundColor: "#1a1f3c", paddingVertical: 24, paddingHorizontal: 20, paddingTop: 40 },
+  headerTitle: { fontSize: 28, fontWeight: "bold", color: "#ffffff" },
+  headerSubtitle: { fontSize: 14, color: "#a0aec0", marginTop: 4 },
+  list: { padding: 16, paddingBottom: 32 },
+  card: { backgroundColor: "#ffffff", borderRadius: 16, padding: 18, marginBottom: 14, elevation: 3 },
+  cardHeader: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 10 },
+  flag: { fontSize: 32 },
+  countryBadge: { backgroundColor: "#eef2ff", paddingHorizontal: 10, paddingVertical: 4, borderRadius: 20 },
+  countryText: { color: "#4f46e5", fontSize: 12, fontWeight: "600" },
+  universityName: { fontSize: 17, fontWeight: "700", color: "#1a1f3c", marginBottom: 6 },
+  description: { fontSize: 13, color: "#718096", lineHeight: 20, marginBottom: 12 },
+  viewMore: { fontSize: 13, color: "#4f46e5", fontWeight: "600" },
 });
