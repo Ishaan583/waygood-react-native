@@ -4,21 +4,21 @@ A responsive and visually rich React Native mobile application built with **Expo
 
 ---
 
-## 📱 Features
+##  Features
 
 - **Home Screen**: Displays a curated list of study abroad programs and universities with country flags, university names, locations, and short descriptions.
 - **Details Screen**: Provides full information about each university program, including:
-  - 💰 Tuition fees
-  - 📅 Intakes
-  - 📍 Country location
-  - 📖 Detailed program overview
+  -  Tuition fees
+  -  Intakes
+  -  Country location
+  -  Detailed program overview
 - **Responsive Layout**: Designed to adapt to different mobile device screen sizes (Android, iOS, and Web).
 - **Clean Component Architecture**: Built using modular, reusable components and organized file layout.
 - **Navigation Options**: Fully configured with **Expo Router** (file-based routing) and includes a backup **React Navigation** configuration.
 
 ---
 
-## 🛠️ Tech Stack & Libraries
+##  Tech Stack & Libraries
 
 - **Framework**: Expo (React Native)
 - **Language**: TypeScript / JavaScript
@@ -27,31 +27,7 @@ A responsive and visually rich React Native mobile application built with **Expo
 
 ---
 
-## 📂 Project Structure
-
-```text
-WayGoodApp/
-├── data/
-│   └── programs.js          # Static JSON mock data for universities
-├── src/
-│   ├── app/                 # Expo Router file-based screens
-│   │   ├── _layout.tsx      # Core navigation stack setup
-│   │   ├── index.tsx        # Home Screen with programs listing
-│   │   └── detail.tsx       # Details Screen with full program info
-│   ├── components/          # Reusable UI components
-│   └── hooks/               # Custom React hooks
-├── screens/                 # Backup screens using standard React Navigation
-│   ├── HomeScreen.js        
-│   └── DetailScreen.js      
-├── package.json             # App dependencies and scripts
-└── app.json                 # Expo configurations
-```
-
----
-
-## 🚀 Getting Started
-
-Follow these steps to set up and run the application locally:
+##  Getting Started
 
 ### 1. Prerequisites
 Ensure you have **Node.js** and **npm** installed on your system.
@@ -81,10 +57,3 @@ Once the server starts, you can:
 - Scan the QR code using the **Expo Go** app on your physical mobile device.
 
 ---
-
-## 📋 Evaluation Criteria Check
-
-- **Code Structure and Readability**: The code uses clean TypeScript types, consistent styling variables, and follows modular React coding conventions.
-- **Responsive UI**: Both screens utilize flexible flexbox layouts, relative padding/margins, and `SafeAreaView` to ensure compatibility across notches, punch-holes, and varying device ratios.
-- **Component Usage**: Modern component practices are used throughout the application, featuring optimized lists (`FlatList`) and touch interactions (`TouchableOpacity`).
-- **GitHub Quality**: Clear project setup, full instructions, and descriptive git commits.
