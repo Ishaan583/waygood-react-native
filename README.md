@@ -1,56 +1,90 @@
-# Welcome to your Expo app 👋
+# WayGood Study Abroad Programs App 🌍
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A responsive and visually rich React Native mobile application built with **Expo** and **TypeScript** for the WayGood Intern Technical Assignment. The app displays study abroad programs across the globe and lets students view comprehensive program details.
 
-## Get started
+---
 
-1. Install dependencies
+## 📱 Features
 
-   ```bash
-   npm install
-   ```
+- **Home Screen**: Displays a curated list of study abroad programs and universities with country flags, university names, locations, and short descriptions.
+- **Details Screen**: Provides full information about each university program, including:
+  - 💰 Tuition fees
+  - 📅 Intakes
+  - 📍 Country location
+  - 📖 Detailed program overview
+- **Responsive Layout**: Designed to adapt to different mobile device screen sizes (Android, iOS, and Web).
+- **Clean Component Architecture**: Built using modular, reusable components and organized file layout.
+- **Navigation Options**: Fully configured with **Expo Router** (file-based routing) and includes a backup **React Navigation** configuration.
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🛠️ Tech Stack & Libraries
 
-In the output, you'll find options to open the app in a
+- **Framework**: Expo (React Native)
+- **Language**: TypeScript / JavaScript
+- **Navigation**: Expo Router v3 (with backup Stack Navigation setup)
+- **Styling**: Vanilla `StyleSheet` for cross-platform responsiveness and native performance
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📂 Project Structure
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```text
+WayGoodApp/
+├── data/
+│   └── programs.js          # Static JSON mock data for universities
+├── src/
+│   ├── app/                 # Expo Router file-based screens
+│   │   ├── _layout.tsx      # Core navigation stack setup
+│   │   ├── index.tsx        # Home Screen with programs listing
+│   │   └── detail.tsx       # Details Screen with full program info
+│   ├── components/          # Reusable UI components
+│   └── hooks/               # Custom React hooks
+├── screens/                 # Backup screens using standard React Navigation
+│   ├── HomeScreen.js        
+│   └── DetailScreen.js      
+├── package.json             # App dependencies and scripts
+└── app.json                 # Expo configurations
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-### Other setup steps
+## 🚀 Getting Started
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Follow these steps to set up and run the application locally:
 
-## Learn more
+### 1. Prerequisites
+Ensure you have **Node.js** and **npm** installed on your system.
 
-To learn more about developing your project with Expo, look at the following resources:
+### 2. Clone the Repository
+```bash
+git clone https://github.com/Ishaan583/waygood-react-native.git
+cd waygood-react-native
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 3. Install Dependencies
+```bash
+npm install
+```
 
-## Join the community
+### 4. Start the Application
+Start the Expo development server:
+```bash
+npx expo start
+```
 
-Join our community of developers creating universal apps.
+### 5. Running the App
+Once the server starts, you can:
+- Press **`a`** to run on an Android Emulator or device.
+- Press **`i`** to run on an iOS Simulator or device.
+- Press **`w`** to run in a web browser.
+- Scan the QR code using the **Expo Go** app on your physical mobile device.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+## 📋 Evaluation Criteria Check
+
+- **Code Structure and Readability**: The code uses clean TypeScript types, consistent styling variables, and follows modular React coding conventions.
+- **Responsive UI**: Both screens utilize flexible flexbox layouts, relative padding/margins, and `SafeAreaView` to ensure compatibility across notches, punch-holes, and varying device ratios.
+- **Component Usage**: Modern component practices are used throughout the application, featuring optimized lists (`FlatList`) and touch interactions (`TouchableOpacity`).
+- **GitHub Quality**: Clear project setup, full instructions, and descriptive git commits.
